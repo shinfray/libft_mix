@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+         #
+#    By: shinfray <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/03 16:37:12 by shinfray          #+#    #+#              #
-#    Updated: 2023/06/15 11:55:03 by shinfray         ###   ########.fr        #
+#    Created: 2023/06/16 10:39:52 by shinfray          #+#    #+#              #
+#    Updated: 2023/06/16 10:39:55 by shinfray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,7 @@ OBJS:=	${SRCS:%.c=${BUILD_DIR}/%.o}
 
 DEPS:=	${OBJS:.o=.d}
 
-CFLAGS:= -Wall -Wextra -Werror
+CFLAGS:= -Wall -Wextra -Werror -Wpedantic
 
 ROOT_INC_DIRS:= includes
 INC_DIRS:= ${shell find ${ROOT_INC_DIRS} -type d}
