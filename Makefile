@@ -6,7 +6,7 @@
 #    By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 16:37:12 by shinfray          #+#    #+#              #
-#    Updated: 2023/06/28 13:18:53 by shinfray         ###   ########.fr        #
+#    Updated: 2023/07/24 14:11:48 by shinfray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,15 +75,17 @@ FTPRINTF_SRCS:=	ft_printf \
 GNL_SRCS:=	get_next_line_bonus \
 			get_next_line_utils_bonus
 
-SRCS:=	${addprefix ${SRCS_DIR}/libft/,${addsuffix ${EXT},${LIBFT_SRCS}}}
+SRCS=	${addprefix ${SRCS_DIR}/libft/,${addsuffix ${EXT},${LIBFT_SRCS}}}
 SRCS+=	${addprefix ${SRCS_DIR}/ft_printf/,${addsuffix ${EXT},${FTPRINTF_SRCS}}}
 SRCS+=	${addprefix ${SRCS_DIR}/get_next_line/,${addsuffix ${EXT},${GNL_SRCS}}}
 
-OBJS:=	${SRCS:%.c=${BUILD_DIR}/%.o}
+OBJS_DIR:= ${BUILD_DIR}/objs
+OBJS:=  ${SRCS:${SRCS_DIR}/%.c=${OBJS_DIR}/%.o}
 
-DEPS:=	${OBJS:.o=.d}
+DEPS_DIR:= ${BUILD_DIR}/deps
+DEPS:=	${OBJS:${OBJS_DIR}/%.o=${DEPS_DIR}/%.d}
 
-CPPFLAGS:= ${addprefix -I,${INC_DIRS}} -MMD -MP
+CPPFLAGS= ${addprefix -I,${INC_DIRS}} -MMD -MP -MF ${@:${OBJS_DIR}/%.o=${DEPS_DIR}/%.d}
 
 RM:=	rm -rf
 
@@ -92,8 +94,9 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${AR} ${ARFLAGS} $@ ${OBJS}
 
-${BUILD_DIR}/%.o: %.c
-	mkdir -p $(dir $@)
+${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c
+	mkdir -p ${dir $@}
+	mkdir -p ${dir ${@:${OBJS_DIR}/%.o=${DEPS_DIR}/%.d}}
 	${CC} ${CPPFLAGS} ${CFLAGS} -c $< -o $@
 
 clean:
