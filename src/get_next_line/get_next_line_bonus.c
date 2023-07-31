@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:50:45 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 13:20:37 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:34:22 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static char	*ft_parse(int fd, char *line, char **stash)
 	while (bytes_read > 0)
 	{
 		(*stash)[bytes_read] = '\0';
-		newline = ft_gnl_strchr(*stash);
+		newline = ft_strchr_gnl(*stash);
 		if (*newline == '\n')
 			return (ft_update_stash(line, stash, newline));
 		line = ft_strnjoin_gnl(line, *stash, (size_t)(newline - *stash));
@@ -71,7 +71,7 @@ static char	*ft_retrieve_from_stash(int fd, char *line, char **stash)
 {
 	char	*newline;
 
-	newline = ft_gnl_strchr(*stash);
+	newline = ft_strchr_gnl(*stash);
 	if (*newline == '\n')
 		return (ft_update_stash(line, stash, newline));
 	line = ft_strnjoin_gnl(NULL, *stash, (size_t)(newline - *stash));
