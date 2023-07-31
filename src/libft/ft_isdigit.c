@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:05:59 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/19 15:08:21 by simonhinf        ###   ########.fr       */
+/*   Updated: 2023/07/31 09:58:01 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_isdigit(int c);
 
 int	ft_isdigit(int c)
 {

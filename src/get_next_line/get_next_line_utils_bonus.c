@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:08:25 by shinfray          #+#    #+#             */
-/*   Updated: 2023/06/27 16:00:26 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:55:09 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	*ft_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-size_t	ft_gnl_strlen(const char *str)
+size_t	ft_strlen_gnl(const char *str)
 {
 	size_t	i;
 
@@ -50,13 +50,13 @@ void	*ft_calloc_gnl(size_t count, size_t size)
 	return (ptr);
 }
 
-char	*ft_gnl_strnjoin(char *s1, const char *s2, size_t n_from_s2_to_copy)
+char	*ft_strnjoin_gnl(char *s1, const char *s2, size_t n_from_s2_to_copy)
 {
 	size_t	s1_len;
 	char	*dest_str;
 
 	if (s1 != NULL)
-		s1_len = ft_gnl_strlen(s1);
+		s1_len = ft_strlen_gnl(s1);
 	else
 		s1_len = 0;
 	dest_str = ft_calloc_gnl(s1_len + n_from_s2_to_copy + 1, sizeof(*dest_str));
@@ -73,6 +73,6 @@ char	*ft_gnl_strnjoin(char *s1, const char *s2, size_t n_from_s2_to_copy)
 char	*ft_gnl_strchr(const char *s)
 {
 	while (*s != '\n' && *s != '\0')
-			++s;
+		++s;
 	return ((char *)s);
 }

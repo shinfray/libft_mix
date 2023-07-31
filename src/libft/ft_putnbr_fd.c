@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 21:26:06 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/30 00:13:40 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:48:54 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd);
 
 void	ft_putnbr_fd(int n, int fd)
 {
@@ -20,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		uns_n = -n;
+		uns_n = (unsigned int)(-n);
 	}
 	if (uns_n > 9)
 		ft_putnbr_fd(uns_n / 10, fd);

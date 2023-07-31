@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:48:14 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/30 00:12:20 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:34:07 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {

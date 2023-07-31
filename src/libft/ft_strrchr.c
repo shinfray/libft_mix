@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:31:06 by shinfray          #+#    #+#             */
-/*   Updated: 2022/11/18 11:22:08 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:38:48 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strrchr(const char *s, int c);
 
 char	*ft_strrchr(const char *s, int c)
 {

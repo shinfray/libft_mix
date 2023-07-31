@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 12:14:13 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/30 00:12:35 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:37:19 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len);
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {

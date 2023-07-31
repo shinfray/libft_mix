@@ -6,18 +6,14 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:35:08 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/21 02:35:09 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:41:36 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	ft_isset(char const *set, char const c)
-{
-	while (*set != '\0' && *set != c)
-		++set;
-	return (*set == c);
-}
+char		*ft_strtrim(char const *s1, char const *set);
+static char	ft_isset(char const *set, char const c);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
@@ -26,7 +22,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	dest_len;
 
 	ptr = NULL;
-	dest = NULL;
 	dest_len = 0;
 	if (s1 == NULL || set == NULL)
 		return (NULL);
@@ -44,4 +39,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	ft_strlcpy(dest, s1, dest_len + 1);
 	return (dest);
+}
+
+static char	ft_isset(char const *set, char const c)
+{
+	while (*set != '\0' && *set != c)
+		++set;
+	return (*set == c);
 }

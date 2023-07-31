@@ -6,18 +6,19 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:24:32 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/21 02:03:52 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:19:16 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char	*tab;
 	size_t	i;
 
-	tab = NULL;
 	i = 0;
 	if (s == NULL || (f) == NULL)
 		return (NULL);

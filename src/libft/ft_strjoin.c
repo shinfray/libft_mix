@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:23:15 by shinfray          #+#    #+#             */
-/*   Updated: 2022/12/18 00:53:33 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:00:43 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strjoin(char const *s1, char const *s2);
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

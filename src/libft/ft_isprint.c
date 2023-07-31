@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 16:22:49 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/19 15:18:30 by simonhinf        ###   ########.fr       */
+/*   Updated: 2023/07/31 09:58:10 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_isprint(int c);
 
 int	ft_isprint(int c)
 {

@@ -6,11 +6,42 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:01:23 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/10 02:38:40 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:14:49 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char			**ft_split(char const *s, char c);
+static size_t	ft_wordcounter(const char *s, const char c);
+static size_t	ft_strlen_split(const char *s, const char c);
+static char		**ft_free_whole_tab(char **tab);
+
+char	**ft_split(char const *s, char c)
+{
+	char	**tab;
+	char	**o_tab;
+	size_t	wordcount;
+
+	if (s == NULL)
+		return (NULL);
+	wordcount = ft_wordcounter(s, c);
+	tab = ft_calloc(wordcount + 1, sizeof(char *));
+	if (tab == NULL)
+		return (NULL);
+	o_tab = tab;
+	while (wordcount-- != 0)
+	{
+		while (*s != '\0' && *s == c)
+			++s;
+		*tab = ft_substr(s, 0, ft_strlen_split(s, c));
+		if (*tab == NULL)
+			return (ft_free_whole_tab(o_tab));
+		s += ft_strlen_split(s, c);
+		++tab;
+	}
+	return (o_tab);
+}
 
 static size_t	ft_wordcounter(const char *s, const char c)
 {
@@ -50,30 +81,4 @@ static char	**ft_free_whole_tab(char **tab)
 		free(*tab++);
 	free(ptr);
 	return (NULL);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char	**tab;
-	char	**o_tab;
-	size_t	wordcount;
-
-	if (s == NULL)
-		return (NULL);
-	wordcount = ft_wordcounter(s, c);
-	tab = ft_calloc(wordcount + 1, sizeof(char *));
-	if (tab == NULL)
-		return (NULL);
-	o_tab = tab;
-	while (wordcount-- != 0)
-	{
-		while (*s != '\0' && *s == c)
-			++s;
-		*tab = ft_substr(s, 0, ft_strlen_split(s, c));
-		if (*tab == NULL)
-			return (ft_free_whole_tab(o_tab));
-		s += ft_strlen_split(s, c);
-		++tab;
-	}
-	return (o_tab);
 }

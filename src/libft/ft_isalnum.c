@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 15:14:30 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/08 14:51:48 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 09:55:38 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+int	ft_isalnum(int c);
 
 int	ft_isalnum(int c)
 {

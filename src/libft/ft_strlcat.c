@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:09:00 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/21 02:01:41 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:06:31 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {

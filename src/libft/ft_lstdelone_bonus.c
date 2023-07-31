@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 10:42:01 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/21 12:30:00 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 11:10:52 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

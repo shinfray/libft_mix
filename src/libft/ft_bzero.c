@@ -6,11 +6,13 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:34:02 by shinfray          #+#    #+#             */
-/*   Updated: 2022/10/08 14:45:56 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 09:50:07 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+void	ft_bzero(void *s, size_t n);
 
 void	ft_bzero(void *s, size_t n)
 {
