@@ -6,25 +6,17 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 19:08:25 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 13:34:22 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:41:01 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-static void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	char		*cast_dst;
-	const char	*cast_src;
-
-	cast_dst = (char *)dst;
-	cast_src = (const char *)src;
-	if (cast_src == cast_dst)
-		return (dst);
-	while (n-- > 0)
-		*cast_dst++ = *cast_src++;
-	return (dst);
-}
+size_t		ft_strlen_gnl(const char *str);
+void		*ft_calloc_gnl(size_t count, size_t size);
+char		*ft_strnjoin_gnl(char *s1, const char *s2, size_t n_from_s2_to_cpy);
+char		*ft_strchr_gnl(const char *s);
+static void	*ft_memcpy(void *dst, const void *src, size_t n);
 
 size_t	ft_strlen_gnl(const char *str)
 {
@@ -50,7 +42,7 @@ void	*ft_calloc_gnl(size_t count, size_t size)
 	return (ptr);
 }
 
-char	*ft_strnjoin_gnl(char *s1, const char *s2, size_t n_from_s2_to_copy)
+char	*ft_strnjoin_gnl(char *s1, const char *s2, size_t n_from_s2_to_cpy)
 {
 	size_t	s1_len;
 	char	*dest_str;
@@ -59,11 +51,11 @@ char	*ft_strnjoin_gnl(char *s1, const char *s2, size_t n_from_s2_to_copy)
 		s1_len = ft_strlen_gnl(s1);
 	else
 		s1_len = 0;
-	dest_str = ft_calloc_gnl(s1_len + n_from_s2_to_copy + 1, sizeof(*dest_str));
+	dest_str = ft_calloc_gnl(s1_len + n_from_s2_to_cpy + 1, sizeof(*dest_str));
 	if (dest_str != NULL)
 	{
 		ft_memcpy(dest_str, s1, s1_len);
-		ft_memcpy(dest_str + s1_len, s2, n_from_s2_to_copy);
+		ft_memcpy(dest_str + s1_len, s2, n_from_s2_to_cpy);
 	}
 	if (s1 != NULL)
 		free(s1);
@@ -75,4 +67,18 @@ char	*ft_strchr_gnl(const char *s)
 	while (*s != '\n' && *s != '\0')
 		++s;
 	return ((char *)s);
+}
+
+static void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	char		*cast_dst;
+	const char	*cast_src;
+
+	cast_dst = (char *)dst;
+	cast_src = (const char *)src;
+	if (cast_src == cast_dst)
+		return (dst);
+	while (n-- > 0)
+		*cast_dst++ = *cast_src++;
+	return (dst);
 }
