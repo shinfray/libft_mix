@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:35:19 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 12:14:13 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:00:46 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	while (*src != '\0' && --dstsize != 0)
 		*dst++ = *src++;
 	*dst = '\0';
-	return ((src - ptr) + ft_strlen(src));
+	return ((size_t)(src - ptr) + ft_strlen(src));
 }

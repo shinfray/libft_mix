@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:28:53 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 11:28:54 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:06:23 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char	c2 = c;
+	const unsigned char	c2 = (const unsigned char)c;
 	const unsigned char	*ptr;
 
 	ptr = (const unsigned char *)s;

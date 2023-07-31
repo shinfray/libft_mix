@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 03:02:21 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/24 17:46:26 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:17:13 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@ int	ft_print_s(va_list *ap)
 
 	i = 0;
 	if (s == NULL)
-		return (write(1, "(null)", 6));
+		return ((int)write(1, "(null)", 6));
 	while (s[i] != '\0')
 		++i;
-	return (write(1, s, i));
+	return ((int)write(1, s, (size_t)i));
 }
 
 int	ft_print_c(va_list *ap)
 {
 	const unsigned char	c = (const unsigned char)va_arg(*ap, int);
 
-	return (write(1, &c, 1));
+	return ((int)write(1, &c, 1));
 }
 
 static void	ft_recurs(const unsigned int uns_num, int *len)
@@ -69,14 +69,14 @@ int	ft_print_d_i(va_list *ap)
 	int				len;
 
 	num = va_arg(*ap, int);
-	uns_num = num;
+	uns_num = (unsigned int)num;
 	len = 0;
 	if (num < 0)
 	{
 		if (write(1, "-", 1) < 0)
 			return (-1);
 		++len;
-		uns_num = -num;
+		uns_num = (unsigned int)(-num);
 	}
 	ft_recurs(uns_num, &len);
 	return (len);

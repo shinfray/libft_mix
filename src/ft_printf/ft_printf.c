@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:29:18 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/24 17:34:03 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:15:18 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static char	*ft_strchr(const char *s, int c)
 {
-	const char	c2 = c;
+	const char	c2 = (const char)c;
 
 	while (*s != c2)
 		if (*s++ == '\0')
@@ -29,7 +29,7 @@ static int	ft_print(const char *format)
 	len = 0;
 	while (format[len] != '%' && format[len] != '\0')
 		++len;
-	return (write(1, format, len));
+	return ((int)write(1, format, (size_t)len));
 }
 
 static int	ft_print_flags(const char *format, va_list *ap)
@@ -50,7 +50,7 @@ static int	ft_print_flags(const char *format, va_list *ap)
 	if (flag_position != NULL)
 	{
 		if (*flag_position == '%')
-			return (write(1, "%", 1));
+			return ((int)write(1, "%", 1));
 		return ((*function_list[flag_position - flags])(ap));
 	}
 	return (-1);

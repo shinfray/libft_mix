@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 03:09:46 by shinfray          #+#    #+#             */
-/*   Updated: 2023/01/19 09:13:38 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:17:48 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	ft_putnbr_hexa(size_t n, const char *base, int *len)
 		if (*len == -1)
 			return ;
 	}
-	c = base[n % 16];
+	c = (unsigned char)base[n % 16];
 	if (write(1, &c, 1) < 0)
 	{
 		*len = -1;

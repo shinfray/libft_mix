@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 13:35:08 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 12:41:36 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:07:45 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		ptr = (char *)(s1 + ft_strlen(s1) - 1);
 		while (ft_isset(set, *ptr) != 0 && ptr > s1)
 			--ptr;
-		dest_len = ptr - s1 + 1;
+		dest_len = (size_t)(ptr - s1 + 1);
 	}
 	dest = ft_calloc(dest_len + 1, sizeof(*dest));
 	if (dest == NULL)

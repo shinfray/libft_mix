@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 14:50:45 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 12:55:09 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:20:37 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static char	*ft_update_stash(char *line, char **stash, char *newline)
 {
 	char	*temp;
 
-	line = ft_strnjoin_gnl(line, *stash, newline - *stash + 1);
+	line = ft_strnjoin_gnl(line, *stash, (size_t)(newline - *stash + 1));
 	if (line == NULL)
 		return (ft_free(stash));
 	++newline;
@@ -56,7 +56,7 @@ static char	*ft_parse(int fd, char *line, char **stash)
 		newline = ft_gnl_strchr(*stash);
 		if (*newline == '\n')
 			return (ft_update_stash(line, stash, newline));
-		line = ft_strnjoin_gnl(line, *stash, newline - *stash);
+		line = ft_strnjoin_gnl(line, *stash, (size_t)(newline - *stash));
 		if (line == NULL)
 			return (ft_free(stash));
 		bytes_read = read(fd, *stash, BUFFER_SIZE);
@@ -74,7 +74,7 @@ static char	*ft_retrieve_from_stash(int fd, char *line, char **stash)
 	newline = ft_gnl_strchr(*stash);
 	if (*newline == '\n')
 		return (ft_update_stash(line, stash, newline));
-	line = ft_strnjoin_gnl(NULL, *stash, newline - *stash);
+	line = ft_strnjoin_gnl(NULL, *stash, (size_t)(newline - *stash));
 	ft_free(stash);
 	if (line == NULL)
 		return (NULL);

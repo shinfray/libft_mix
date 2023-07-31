@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:23:36 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 11:46:50 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:00:01 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memset(void *b, int c, size_t len);
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	const unsigned char	uc_c = c;
+	const unsigned char	uc_c = (const unsigned char)c;
 	unsigned char		*uc_b;
 
 	uc_b = (unsigned char *)b;

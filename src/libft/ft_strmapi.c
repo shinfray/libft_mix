@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 12:24:32 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 12:19:16 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:10:47 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (s[i] != '\0')
 	{
-		tab[i] = (*f)(i, s[i]);
+		tab[i] = (*f)((unsigned int)i, s[i]);
 		++i;
 	}
 	return (tab);

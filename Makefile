@@ -6,9 +6,13 @@
 #    By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/03 16:37:12 by shinfray          #+#    #+#              #
-#    Updated: 2023/07/24 14:11:48 by shinfray         ###   ########.fr        #
+#    Updated: 2023/07/31 13:27:24 by shinfray         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+################################################################################
+#                                 CONFIG                                       #
+################################################################################
 
 .DELETE_ON_ERROR:
 .SILENT:
@@ -19,8 +23,38 @@ SRCS_DIR:= src
 BUILD_DIR:= build
 INC_DIRS:= include
 
-CFLAGS:= -Wall -Wextra -Werror -Wpedantic
+CFLAGS= -std=c17 -Wall -Wextra -Werror -Wpedantic -pedantic-errors -O3
+
+CFLAGS+=	-Wconversion \
+			-Wdouble-promotion \
+			-Wfloat-equal \
+			-Wformat=2 \
+			-Winit-self \
+			-fno-common \
+			-Wshadow \
+			-Wundef \
+			-Wunused-macros \
+			-Wwrite-strings \
+			-Wmissing-prototypes \
+			-Wmissing-declarations \
+			-Wstrict-prototypes
+#			-Wcast-qual \
+#			-Wpadded
+#
+#			gcc flags only
+#			-Wformat-overflow \
+#			-Wformat-truncation \
+#			-Wlogical-op \
+#			-Wformat-signedness \
+#			-Wduplicated-cond \
+#			-Wduplicated-branches \
+#			-Walloc-zero
+
 ARFLAGS:= crs
+
+################################################################################
+#                                 PROGRAM'S SRCS                               #
+################################################################################
 
 EXT:=	.c
 
@@ -75,6 +109,10 @@ FTPRINTF_SRCS:=	ft_printf \
 GNL_SRCS:=	get_next_line_bonus \
 			get_next_line_utils_bonus
 
+################################################################################
+#                                 FORMATING                                    #
+################################################################################
+
 SRCS=	${addprefix ${SRCS_DIR}/libft/,${addsuffix ${EXT},${LIBFT_SRCS}}}
 SRCS+=	${addprefix ${SRCS_DIR}/ft_printf/,${addsuffix ${EXT},${FTPRINTF_SRCS}}}
 SRCS+=	${addprefix ${SRCS_DIR}/get_next_line/,${addsuffix ${EXT},${GNL_SRCS}}}
@@ -88,6 +126,10 @@ DEPS:=	${OBJS:${OBJS_DIR}/%.o=${DEPS_DIR}/%.d}
 CPPFLAGS= ${addprefix -I,${INC_DIRS}} -MMD -MP -MF ${@:${OBJS_DIR}/%.o=${DEPS_DIR}/%.d}
 
 RM:=	rm -rf
+
+################################################################################
+#                                 MAKEFILE RULES                               #
+################################################################################
 
 all: ${NAME}
 

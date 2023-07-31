@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 11:02:27 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 11:06:59 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:09:35 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_itoa(int n)
 	if (n < 0)
 		ft_fill(s, (unsigned int)(-n), numb_digit - 1);
 	else
-		ft_fill(s, n, numb_digit - 1);
+		ft_fill(s, (unsigned int)n, numb_digit - 1);
 	s[numb_digit] = '\0';
 	return (s);
 }

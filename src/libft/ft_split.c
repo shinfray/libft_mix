@@ -6,7 +6,7 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:01:23 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 12:14:49 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:09:05 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static size_t	ft_strlen_split(const char *s, const char c)
 	ptr = s;
 	while (*ptr != '\0' && *ptr != c)
 		++ptr;
-	return (ptr - s);
+	return ((size_t)(ptr - s));
 }
 
 static char	**ft_free_whole_tab(char **tab)
