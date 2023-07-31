@@ -6,30 +6,16 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 03:09:46 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 13:17:48 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:48:54 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_putnbr_hexa(size_t n, const char *base, int *len)
-{
-	unsigned char	c;
-
-	if (n > 15)
-	{
-		ft_putnbr_hexa(n / 16, base, len);
-		if (*len == -1)
-			return ;
-	}
-	c = (unsigned char)base[n % 16];
-	if (write(1, &c, 1) < 0)
-	{
-		*len = -1;
-		return ;
-	}
-	(*len)++;
-}
+int			ft_print_x(va_list *ap);
+int			ft_print_upper_x(va_list *ap);
+int			ft_print_p(va_list *ap);
+static void	ft_putnbr_hexa(size_t n, const char *base, int *len);
 
 int	ft_print_x(va_list *ap)
 {
@@ -64,4 +50,23 @@ int	ft_print_p(va_list *ap)
 	if (len < 0)
 		return (-1);
 	return (len + 2);
+}
+
+static void	ft_putnbr_hexa(size_t n, const char *base, int *len)
+{
+	unsigned char	c;
+
+	if (n > 15)
+	{
+		ft_putnbr_hexa(n / 16, base, len);
+		if (*len == -1)
+			return ;
+	}
+	c = (unsigned char)base[n % 16];
+	if (write(1, &c, 1) < 0)
+	{
+		*len = -1;
+		return ;
+	}
+	(*len)++;
 }

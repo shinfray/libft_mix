@@ -6,20 +6,52 @@
 /*   By: shinfray <shinfray@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 12:29:18 by shinfray          #+#    #+#             */
-/*   Updated: 2023/07/31 13:15:18 by shinfray         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:47:26 by shinfray         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static char	*ft_strchr(const char *s, int c)
-{
-	const char	c2 = (const char)c;
+int			ft_printf(const char *format, ...);
+static int	ft_parse_format(const char *format, va_list *ap);
+static int	ft_print(const char *format);
+static int	ft_print_flags(const char *format, va_list *ap);
+static char	*ft_strchr(const char *s, int c);
 
-	while (*s != c2)
-		if (*s++ == '\0')
-			return (NULL);
-	return ((char *)s);
+int	ft_printf(const char *format, ...)
+{
+	va_list	ap;
+	int		count;
+
+	va_start(ap, format);
+	count = ft_parse_format(format, &ap);
+	va_end(ap);
+	return (count);
+}
+
+static int	ft_parse_format(const char *format, va_list *ap)
+{
+	int	count;
+	int	return_value;
+
+	count = 0;
+	return_value = 0;
+	while (*format != '\0')
+	{
+		return_value = ft_print(format);
+		if (return_value < 0)
+			return (-1);
+		format += return_value;
+		count += return_value;
+		if (*format == '\0')
+			return (count);
+		return_value = ft_print_flags(format, ap);
+		if (return_value < 0)
+			return (-1);
+		count += return_value;
+		format += 2;
+	}
+	return (count);
 }
 
 static int	ft_print(const char *format)
@@ -56,38 +88,12 @@ static int	ft_print_flags(const char *format, va_list *ap)
 	return (-1);
 }
 
-static int	ft_parse_format(const char *format, va_list *ap)
+static char	*ft_strchr(const char *s, int c)
 {
-	int	count;
-	int	return_value;
+	const char	c2 = (const char)c;
 
-	count = 0;
-	return_value = 0;
-	while (*format != '\0')
-	{
-		return_value = ft_print(format);
-		if (return_value < 0)
-			return (-1);
-		format += return_value;
-		count += return_value;
-		if (*format == '\0')
-			return (count);
-		return_value = ft_print_flags(format, ap);
-		if (return_value < 0)
-			return (-1);
-		count += return_value;
-		format += 2;
-	}
-	return (count);
-}
-
-int	ft_printf(const char *format, ...)
-{
-	va_list	ap;
-	int		count;
-
-	va_start(ap, format);
-	count = ft_parse_format(format, &ap);
-	va_end(ap);
-	return (count);
+	while (*s != c2)
+		if (*s++ == '\0')
+			return (NULL);
+	return ((char *)s);
 }
